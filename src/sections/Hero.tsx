@@ -119,69 +119,49 @@ export default function Hero() {
           </div>
 
           {/* Graphical Emblem & Car Overlay */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
+          <div className="lg:col-span-5 relative flex flex-col items-center justify-between min-h-[500px] pt-4">
             
             {/* Big Circular Logo Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-white bg-white shadow-2xl flex flex-col items-center justify-center p-6 text-center select-none overflow-hidden group"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full border-4 border-white bg-white shadow-xl flex items-center justify-center p-3 z-20"
             >
-              {/* Outer ring accent lines */}
-              <div className="absolute inset-2 border-2 border-dashed border-slate-200 rounded-full group-hover:rotate-45 transition-transform duration-10000"></div>
-              
-              {/* GSM circular border */}
-              <div className="w-11/12 h-11/12 rounded-full border-4 border-gradient-to-tr from-gsm-blue via-emerald-100 to-gsm-green flex flex-col items-center justify-center relative p-8">
-                
-                {/* GSM Logo text in circular frame */}
-                <div className="font-heading font-black text-6xl md:text-8xl tracking-tighter flex leading-none text-slate-900 select-none">
-                  <span className="text-gsm-green">G</span>
-                  <span className="text-gsm-blue">S</span>
-                  <span className="text-amber-500">M</span>
-                </div>
-                
-                {/* Road illustration in emblem */}
-                <div className="w-full h-8 mt-2 relative">
-                  <svg viewBox="0 0 100 20" fill="none" className="w-full h-full text-slate-700">
-                    <path d="M0,15 Q50,0 100,15" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                    <path d="M0,15 Q50,0 100,15" stroke="white" strokeWidth="1" strokeDasharray="3 3" />
-                  </svg>
-                </div>
-
-                <div className="mt-2 text-center">
-                  <h3 className="font-heading font-black text-lg text-gsm-blue leading-none">
-                    GoSmart Mobility
-                  </h3>
-                  <p className="text-[10px] font-semibold text-slate-500 tracking-wide mt-1 uppercase">
-                    your own fleet.. Everywhere
-                  </p>
-                </div>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="GoSmart Mobility Logo" 
+                className="w-full h-full object-contain"
+              />
             </motion.div>
 
-            {/* Overlapping Green Taxi Image container */}
+            {/* Skyline & Road Background Container */}
+            <div className="absolute inset-x-0 bottom-0 top-28 rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-slate-100 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=800&q=80"
+                alt="City Skyline Road"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
+            </div>
+
+            {/* Green Cab (Moved Up, Overlayed) */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-              className="absolute -bottom-8 right-0 md:-right-8 w-60 sm:w-72 md:w-80 bg-white p-3 rounded-3xl shadow-2xl border border-slate-100"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="relative z-10 w-64 sm:w-72 -mt-10 mb-6 select-none"
             >
               <img
-                src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80"
-                alt="Green Smart Taxi"
-                className="w-full h-36 md:h-44 object-cover rounded-2xl"
+                src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80"
+                alt="GoSmart Green Taxi"
+                className="w-full object-contain drop-shadow-2xl rounded-2xl border border-white shadow-lg"
               />
-              <div className="mt-3 flex justify-between items-center px-1">
-                <div>
-                  <h4 className="font-heading font-black text-sm text-slate-900 leading-none">GoSmart Fleet</h4>
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Premium Green Hybrid</span>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-gsm-green text-[10px] font-bold">
-                  24*7 Active
-                </span>
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-emerald-600 text-white font-extrabold text-[9px] tracking-wider uppercase px-2.5 py-0.5 rounded-md shadow-md border border-emerald-400">
+                GoSmart Cab
               </div>
             </motion.div>
+
           </div>
 
         </div>
