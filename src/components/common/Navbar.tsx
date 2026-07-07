@@ -39,13 +39,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo Brand */}
           <a href="#home" className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-gsm-blue to-gsm-green text-white shadow-lg transition-transform duration-300 group-hover:scale-105">
-              <span className="font-heading font-extrabold text-sm tracking-tighter">GSM</span>
-              {/* Subtle green car light dot */}
-              <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full animate-pulse"></span>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="GoSmart Mobility Logo" 
+              className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
             <div className="flex flex-col">
               <div className="font-heading font-black text-lg tracking-tight flex leading-none">
                 <span className="text-gsm-blue">GoSmart</span>

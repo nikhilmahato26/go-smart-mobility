@@ -100,9 +100,12 @@ export default function Strengths() {
               <div className="absolute inset-1 border border-dashed border-gsm-green rounded-full group-hover:rotate-45 transition-transform duration-10000"></div>
               
               {/* GSM center circle */}
-              <div className="w-10/12 h-10/12 rounded-full bg-gradient-to-tr from-gsm-blue to-gsm-green text-white flex flex-col items-center justify-center p-4 shadow-md">
-                <span className="font-heading font-black text-4xl">GSM</span>
-                <span className="text-[7px] text-slate-200 tracking-widest font-extrabold uppercase mt-1">GoSmart</span>
+              <div className="w-10/12 h-10/12 rounded-full flex items-center justify-center p-2">
+                <img 
+                  src="/logo.png" 
+                  alt="GSM Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
 
