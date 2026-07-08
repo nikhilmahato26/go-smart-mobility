@@ -23,9 +23,11 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="space-y-6">
             <a href="#home" className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-gsm-blue to-gsm-green text-white shadow-lg">
-                <span className="font-heading font-extrabold text-sm">GSM</span>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="GoSmart Mobility Logo" 
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-slate-700 shadow-xl transition-transform duration-300 hover:scale-105"
+              />
               <div className="flex flex-col">
                 <div className="font-heading font-black text-lg tracking-tight flex leading-none">
                   <span className="text-white">GoSmart</span>
@@ -135,9 +137,13 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 items-start">
                 <Mail className="w-5 h-5 text-gsm-lightgreen shrink-0 mt-0.5" />
-                <a href={`mailto:${siteContacts.email}`} className="hover:text-white transition-colors break-all">
-                  {siteContacts.email}
-                </a>
+                <div className="flex flex-col gap-1">
+                  {siteContacts.emails.map((email, index) => (
+                    <a key={index} href={`mailto:${email}`} className="hover:text-white transition-colors break-all">
+                      {email}
+                    </a>
+                  ))}
+                </div>
               </li>
               <li className="flex gap-3 items-start">
                 <MapPin className="w-5 h-5 text-gsm-lightgreen shrink-0 mt-0.5" />

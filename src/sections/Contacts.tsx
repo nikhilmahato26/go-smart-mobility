@@ -41,8 +41,8 @@ export default function Contacts() {
     },
     {
       title: 'EMAIL',
-      value: siteContacts.email,
-      href: `mailto:${siteContacts.email}`,
+      value: siteContacts.emails,
+      href: siteContacts.emails.map(e => `mailto:${e}`),
       icon: Mail,
       color: 'text-emerald-600 bg-emerald-50 border-emerald-100'
     },
@@ -107,12 +107,22 @@ export default function Contacts() {
                         {item.title}
                       </span>
                       {item.href ? (
-                        <a href={item.href} className="block text-xs sm:text-sm font-black text-slate-900 hover:text-gsm-blue break-all mt-1">
-                          {item.value}
-                        </a>
+                        Array.isArray(item.value) ? (
+                          <div className="mt-1 space-y-1">
+                            {item.value.map((val, i) => (
+                              <a key={i} href={(item.href as string[])[i]} className="block text-xs sm:text-sm font-black text-slate-900 hover:text-gsm-blue break-all">
+                                {val}
+                              </a>
+                            ))}
+                          </div>
+                        ) : (
+                          <a href={item.href as string} className="block text-xs sm:text-sm font-black text-slate-900 hover:text-gsm-blue break-all mt-1">
+                            {item.value as string}
+                          </a>
+                        )
                       ) : (
                         <span className="block text-xs sm:text-sm font-semibold text-slate-700 leading-relaxed mt-1">
-                          {item.value}
+                          {item.value as string}
                         </span>
                       )}
                     </div>
@@ -253,7 +263,7 @@ export default function Contacts() {
             {['💬 WhatsApp Support', '📞 Call Chauffeur', '📧 Email HQ'].map((lbl, idx) => (
               <a
                 key={idx}
-                href={idx === 0 ? `https://wa.me/91${siteContacts.phone}` : idx === 1 ? `tel:${siteContacts.phone}` : `mailto:${siteContacts.email}`}
+                href={idx === 0 ? `https://wa.me/91${siteContacts.phone}` : idx === 1 ? `tel:${siteContacts.phone}` : `mailto:${siteContacts.emails[0]}`}
                 className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 text-xs font-bold rounded-xl transition-all"
               >
                 {lbl}

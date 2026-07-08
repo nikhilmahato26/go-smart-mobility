@@ -43,7 +43,7 @@ export default function Navbar() {
             <img 
               src="/logo.png" 
               alt="GoSmart Mobility Logo" 
-              className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105"
+              className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-slate-200 shadow-md transition-transform duration-300 group-hover:scale-105"
             />
             <div className="flex flex-col">
               <div className="font-heading font-black text-lg tracking-tight flex leading-none">
