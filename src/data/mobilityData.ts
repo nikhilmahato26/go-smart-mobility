@@ -315,5 +315,6 @@ export const siteContacts = {
   phone: '9821504916',
   email: 'Radhey6887@gmail.com',
   address: 'plot No.229, Pocket -9, DDA Flats, Nasirpur Road Sector - Dwarka, Palam - 110045',
+  headOfficeAddress: 'FIRST FLOOR, PLOT NO. 43-B, KHASRA NO. 932, BLOCK-D, SHYAM VIHAR, PHASE-1, VILLAGE-DINDARPUR, NAJAFGARH, New Delhi, South West Delhi, Delhi - 110043',
   workingHours: '24*7 SERVICES'
 };

@@ -142,6 +142,14 @@ export default function Footer() {
               <li className="flex gap-3 items-start">
                 <MapPin className="w-5 h-5 text-gsm-lightgreen shrink-0 mt-0.5" />
                 <span className="text-xs leading-relaxed text-slate-400">
+                  <strong className="text-white block mb-0.5">Head Office:</strong>
+                  {siteContacts.headOfficeAddress}
+                </span>
+              </li>
+              <li className="flex gap-3 items-start">
+                <MapPin className="w-5 h-5 text-gsm-lightgreen shrink-0 mt-0.5" />
+                <span className="text-xs leading-relaxed text-slate-400">
+                  <strong className="text-white block mb-0.5">Branch Office:</strong>
                   {siteContacts.address}
                 </span>
               </li>

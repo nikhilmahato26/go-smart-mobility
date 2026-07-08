@@ -47,7 +47,14 @@ export default function Contacts() {
       color: 'text-emerald-600 bg-emerald-50 border-emerald-100'
     },
     {
-      title: 'ADDRESS',
+      title: 'HEAD OFFICE',
+      value: siteContacts.headOfficeAddress,
+      href: null,
+      icon: MapPin,
+      color: 'text-orange-600 bg-orange-50 border-orange-100'
+    },
+    {
+      title: 'BRANCH OFFICE',
       value: siteContacts.address,
       href: null,
       icon: MapPin,
