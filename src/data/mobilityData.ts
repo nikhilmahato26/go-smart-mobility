@@ -105,6 +105,24 @@ export const fleetData: FleetItem[] = [
     capacity: '12-26 Seats',
     features: ['Perfect for group tours', 'High head room', 'Individual AC vents', 'Huge luggage capacity'],
     imageUrl: 'https://cdn.bluebirdtravels.in/wp-content/uploads/2017/01/Tempo_Traveller_PI-531x354.png'
+  },
+  {
+    id: 'deluxe_bus',
+    name: 'Deluxe Bus / Coach',
+    brand: 'Tata / Ashok Leyland',
+    type: 'Luxury Coach',
+    capacity: '35-45 Seats',
+    features: ['Pushback seats', 'AC / Non-AC options', 'Ample Luggage Hold', 'Stereo Music System'],
+    imageUrl: 'https://punetours.com/wp-content/uploads/2017/01/hire-semi-luxury-bus-pune-mumbai.jpg'
+  },
+  {
+    id: 'volvo_bus',
+    name: 'Volvo Club Class Bus',
+    brand: 'Volvo / Scania',
+    type: 'Luxury Multi-Axle',
+    capacity: '40-50 Seats',
+    features: ['Premium Reclining Seats', 'GPS Live Tracking', 'Air Suspension', 'USB Charger Ports'],
+    imageUrl: 'https://assets.volvo.com/is/image/VolvoInformationTechnologyAB/maroon-bus?qlt=82&wid=1024&ts=1660222495591&dpr=off&fit=constrain'
   }
 ];
 

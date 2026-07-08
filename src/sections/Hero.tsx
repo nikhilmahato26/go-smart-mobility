@@ -58,7 +58,7 @@ _Sent from GoSmart Mobility Website_`;
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Text Content */}
           <div className="order-2 lg:order-1 lg:col-span-7 text-center lg:text-left space-y-8">
             <div className="space-y-3">
@@ -71,10 +71,10 @@ _Sent from GoSmart Mobility Website_`;
                 <Sparkles className="w-3.5 h-3.5 text-gsm-green" />
                 <span>Premium Cab Network</span>
               </motion.div>
-              
+
               {/* Script Welcome Header */}
               <div className="space-y-1">
-                <motion.h2 
+                <motion.h2
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
@@ -195,6 +195,8 @@ _Sent from GoSmart Mobility Website_`;
                         <option value="SUV">SUV</option>
                         <option value="MUV">MUV</option>
                         <option value="TEMPO TRAVELLER">TEMPO TRAVELLER</option>
+                        <option value="DELUXE BUS / COACH">DELUXE BUS / COACH</option>
+                        <option value="VOLVO CLUB CLASS BUS">VOLVO CLUB CLASS BUS</option>
                       </select>
                       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                         <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
