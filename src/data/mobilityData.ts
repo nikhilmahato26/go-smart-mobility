@@ -62,13 +62,13 @@ export interface DepartmentItem {
 
 export const fleetData: FleetItem[] = [
   {
-    id: 'innova',
-    name: 'Innova',
-    brand: 'Toyota',
-    type: 'MUV / SUV',
-    capacity: '6-7 Seats',
-    features: ['Spacious Cabin', 'Premium Comfort', 'Ample Luggage space', 'Dual AC'],
-    imageUrl: 'https://images.overdrive.in/wp-content/uploads/2023/05/Untitled-design-10-900x506.png' // SUV/MUV placeholder
+    id: 'dzire',
+    name: 'Swift Dzire',
+    brand: 'Maruti Suzuki',
+    type: 'Compact Sedan',
+    capacity: '4 Seats',
+    features: ['Urban commutes', 'Punctual transit', 'Perfect for small families', 'AC'],
+    imageUrl: 'https://www.skyautomobiles.in/images/car/arena/dzire/bluishblack.webp'
   },
   {
     id: 'etios',
@@ -80,15 +80,6 @@ export const fleetData: FleetItem[] = [
     imageUrl: 'https://media.zigcdn.com/media/content/2014/Jul/toyota-etios-xclusive-pic-photo-image-04072014-m1_560x420.jpg?tr=w-420'
   },
   {
-    id: 'dzire',
-    name: 'Swift Dzire',
-    brand: 'Maruti Suzuki',
-    type: 'Compact Sedan',
-    capacity: '4 Seats',
-    features: ['Urban commutes', 'Punctual transit', 'Perfect for small families', 'AC'],
-    imageUrl: 'https://www.skyautomobiles.in/images/car/arena/dzire/bluishblack.webp'
-  },
-  {
     id: 'ertiga',
     name: 'Ertiga',
     brand: 'Maruti Suzuki',
@@ -96,6 +87,15 @@ export const fleetData: FleetItem[] = [
     capacity: '6 Seats',
     features: ['Versatile seating', 'Economical group tours', 'AC', 'Reliable performance'],
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF-giH693KuPM6DPTlKjsHefV5UVa4Tb-bC5AiIuUuHw&s=10'
+  },
+  {
+    id: 'innova',
+    name: 'Innova Crysta',
+    brand: 'Toyota',
+    type: 'MUV / SUV',
+    capacity: '6-7 Seats',
+    features: ['Spacious Cabin', 'Premium Comfort', 'Ample Luggage space', 'Dual AC'],
+    imageUrl: 'https://images.overdrive.in/wp-content/uploads/2023/05/Untitled-design-10-900x506.png' // SUV/MUV placeholder
   },
   {
     id: 'tempo',
