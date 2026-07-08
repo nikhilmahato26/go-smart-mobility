@@ -68,7 +68,7 @@ export const fleetData: FleetItem[] = [
     type: 'MUV / SUV',
     capacity: '6-7 Seats',
     features: ['Spacious Cabin', 'Premium Comfort', 'Ample Luggage space', 'Dual AC'],
-    imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80' // SUV/MUV placeholder
+    imageUrl: 'https://images.overdrive.in/wp-content/uploads/2023/05/Untitled-design-10-900x506.png' // SUV/MUV placeholder
   },
   {
     id: 'etios',
@@ -77,7 +77,7 @@ export const fleetData: FleetItem[] = [
     type: 'Sedan',
     capacity: '4 Seats',
     features: ['Fuel Efficient', 'Comfortable ride', 'Spacious Trunk', 'Compact Design'],
-    imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://media.zigcdn.com/media/content/2014/Jul/toyota-etios-xclusive-pic-photo-image-04072014-m1_560x420.jpg?tr=w-420'
   },
   {
     id: 'dzire',
@@ -86,7 +86,7 @@ export const fleetData: FleetItem[] = [
     type: 'Compact Sedan',
     capacity: '4 Seats',
     features: ['Urban commutes', 'Punctual transit', 'Perfect for small families', 'AC'],
-    imageUrl: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://www.skyautomobiles.in/images/car/arena/dzire/bluishblack.webp'
   },
   {
     id: 'ertiga',
@@ -95,7 +95,7 @@ export const fleetData: FleetItem[] = [
     type: 'MUV',
     capacity: '6 Seats',
     features: ['Versatile seating', 'Economical group tours', 'AC', 'Reliable performance'],
-    imageUrl: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF-giH693KuPM6DPTlKjsHefV5UVa4Tb-bC5AiIuUuHw&s=10'
   },
   {
     id: 'tempo',
@@ -104,7 +104,7 @@ export const fleetData: FleetItem[] = [
     type: 'Large Van',
     capacity: '12-26 Seats',
     features: ['Perfect for group tours', 'High head room', 'Individual AC vents', 'Huge luggage capacity'],
-    imageUrl: 'https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://cdn.bluebirdtravels.in/wp-content/uploads/2017/01/Tempo_Traveller_PI-531x354.png'
   }
 ];
 

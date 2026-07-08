@@ -46,13 +46,13 @@ export default function CabFleet() {
         {/* Dynamic Fleet Showcase Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Menu / Selector (4 cols) */}
-          <div className="lg:col-span-4 space-y-3">
+          {/* Selector Panel (visible only on desktop) */}
+          <div className="hidden lg:block lg:col-span-4 space-y-3">
             {fleetData.map((car, i) => (
               <button
                 key={car.id}
                 onClick={() => setActiveCarIndex(i)}
-                className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 flex justify-between items-center ${
+                className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 flex justify-between items-center cursor-pointer ${
                   activeCarIndex === i
                     ? 'border-gsm-blue bg-gsm-blue text-white shadow-lg translate-x-2'
                     : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
@@ -62,7 +62,7 @@ export default function CabFleet() {
                   <h3 className="font-heading font-black text-md leading-none">
                     {car.name}
                   </h3>
-                  <span className={`text-[11px] font-semibold uppercase tracking-wider ${activeCarIndex === i ? 'text-slate-200' : 'text-slate-400'}`}>
+                  <span className={`text-[11px] font-semibold uppercase tracking-wider block mt-1 ${activeCarIndex === i ? 'text-slate-200' : 'text-slate-400'}`}>
                     {car.brand} • {car.type}
                   </span>
                 </div>
@@ -73,8 +73,31 @@ export default function CabFleet() {
             ))}
           </div>
 
-          {/* Right Image/Detail Panel (8 cols) */}
-          <div className="lg:col-span-8 bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-md min-h-[400px] flex flex-col justify-between">
+          {/* Image/Detail Panel (Full width on mobile, 8 cols on desktop) */}
+          <div className="lg:col-span-8 bg-white border border-slate-200/80 rounded-3xl p-4 md:p-8 shadow-md min-h-[380px] flex flex-col justify-between">
+            
+            {/* Mobile Selector Menu (visible only on mobile) */}
+            <div className="flex lg:hidden flex-row overflow-x-auto gap-2 py-1.5 -mx-4 px-4 scrollbar-none border-b border-slate-100 pb-3 mb-4">
+              {fleetData.map((car, i) => (
+                <button
+                  key={car.id}
+                  onClick={() => setActiveCarIndex(i)}
+                  className={`shrink-0 w-auto text-left py-1.5 px-3 rounded-xl border transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+                    activeCarIndex === i
+                      ? 'border-gsm-blue bg-gsm-blue text-white shadow-sm scale-102 font-extrabold'
+                      : 'border-slate-200 bg-white text-slate-700'
+                  }`}
+                >
+                  <span className="font-heading font-black text-xs">
+                    {car.name}
+                  </span>
+                  <span className={`text-[9px] font-semibold ${activeCarIndex === i ? 'text-slate-200' : 'text-slate-400'}`}>
+                    ({car.capacity})
+                  </span>
+                </button>
+              ))}
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCarIndex}
@@ -82,14 +105,14 @@ export default function CabFleet() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center"
               >
                 {/* Photo */}
                 <div className="relative group overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
                   <img
                     src={fleetData[activeCarIndex].imageUrl}
                     alt={fleetData[activeCarIndex].name}
-                    className="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-40 sm:h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <span className="text-white text-xs font-bold uppercase tracking-wider">
@@ -99,25 +122,25 @@ export default function CabFleet() {
                 </div>
 
                 {/* Details */}
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   <div>
-                    <span className="text-xs font-black text-gsm-green uppercase tracking-widest">
+                    <span className="text-[10px] md:text-xs font-black text-gsm-green uppercase tracking-widest">
                       {fleetData[activeCarIndex].brand}
                     </span>
-                    <h3 className="font-heading font-black text-2xl md:text-3.5xl text-slate-900 leading-tight">
+                    <h3 className="font-heading font-black text-xl md:text-3.5xl text-slate-900 leading-tight">
                       {fleetData[activeCarIndex].name}
                     </h3>
-                    <div className="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold">
-                      <Users className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-1.5 mt-1 px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[10px] md:text-xs font-bold">
+                      <Users className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       <span>Capacity: {fleetData[activeCarIndex].capacity}</span>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Key Features</h4>
+                  <div className="space-y-1.5">
+                    <h4 className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest">Key Features</h4>
                     <div className="grid grid-cols-2 gap-2">
                       {fleetData[activeCarIndex].features.map((feat, index) => (
-                        <div key={index} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                        <div key={index} className="flex items-center gap-1.5 text-[11px] md:text-xs font-semibold text-slate-700">
                           <span className="w-1.5 h-1.5 rounded-full bg-gsm-green shrink-0"></span>
                           <span>{feat}</span>
                         </div>
@@ -127,23 +150,23 @@ export default function CabFleet() {
 
                   <a 
                     href="#contact"
-                    className="inline-flex items-center gap-2 text-xs font-bold bg-slate-900 text-white hover:bg-gsm-blue px-4 py-2.5 rounded-xl transition-all duration-300"
+                    className="inline-flex items-center gap-2 text-[11px] md:text-xs font-bold bg-slate-900 text-white hover:bg-gsm-blue px-3.5 py-2 rounded-xl transition-all duration-300 w-fit"
                   >
                     <span>Book this car</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
                   </a>
                 </div>
               </motion.div>
             </AnimatePresence>
 
             {/* Bottom Slogans Grid */}
-            <div className="border-t border-slate-100 pt-6 mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            <div className="border-t border-slate-100 pt-4 mt-6 grid grid-cols-3 md:grid-cols-6 gap-3">
               {fleetBadges.map((badge, i) => (
                 <div key={i} className="flex flex-col items-center text-center">
-                  <div className="p-2 rounded-full bg-slate-50 border border-slate-100 text-slate-600 mb-1">
-                    <badge.icon className="w-4 h-4 stroke-[2]" />
+                  <div className="p-1.5 rounded-full bg-slate-50 border border-slate-100 text-slate-600 mb-1">
+                    <badge.icon className="w-3.5 h-3.5 stroke-[2]" />
                   </div>
-                  <span className="text-[9px] font-bold text-slate-500 leading-none">
+                  <span className="text-[8px] md:text-[9px] font-bold text-slate-500 leading-none">
                     {badge.label}
                   </span>
                 </div>

@@ -1,8 +1,49 @@
-import React from 'react';
-import { ShieldCheck, MapPin, Sparkles, Clock, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShieldCheck, MapPin, Sparkles, Clock, ArrowRight, Car, Route, Calendar, User, Phone, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { siteContacts } from '../data/mobilityData';
+
+const timeOptions = [
+  '12:00 AM', '01:00 AM', '02:00 AM', '03:00 AM', '04:00 AM', '05:00 AM',
+  '06:00 AM', '07:00 AM', '08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM',
+  '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM',
+  '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM'
+];
 
 export default function Hero() {
+  const [formData, setFormData] = useState({
+    carType: 'SEDAN',
+    tripType: 'Round Trip',
+    from: '',
+    to: '',
+    pickupDate: '',
+    pickupTime: '08:00 AM',
+    travelerName: '',
+    mobileNumber: '',
+    email: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const message = `*New Cab Booking Request* 🚖
+----------------------------------
+• *Car Type:* ${formData.carType}
+• *Trip Type:* ${formData.tripType}
+• *From:* ${formData.from}
+• *To:* ${formData.to}
+• *Pickup Date:* ${formData.pickupDate}
+• *Pickup Time:* ${formData.pickupTime}
+• *Traveler Name:* ${formData.travelerName}
+• *Mobile Number:* ${formData.mobileNumber}
+${formData.email ? `• *Email:* ${formData.email}` : ''}
+----------------------------------
+_Sent from GoSmart Mobility Website_`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/91${siteContacts.phone}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
   return (
     <section id="home" className="relative pt-28 pb-20 md:py-36 bg-gradient-to-br from-blue-50 via-white to-emerald-50/30 overflow-hidden border-b border-slate-200/60">
       {/* Decorative leaf branch in top left for natural, eco-friendly mobility vibe */}
@@ -19,7 +60,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Text Content */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-8">
+          <div className="order-2 lg:order-1 lg:col-span-7 text-center lg:text-left space-y-8">
             <div className="space-y-3">
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -118,50 +159,212 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Graphical Emblem & Car Overlay */}
-          <div className="lg:col-span-5 relative flex flex-col items-center justify-between min-h-[500px] pt-4">
-            
-            {/* Big Circular Logo Badge */}
+          {/* Booking Form on the Right */}
+          <div className="order-1 lg:order-2 lg:col-span-5 w-full flex justify-center lg:justify-end">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full border-4 border-white bg-white shadow-xl flex items-center justify-center p-3 z-20"
+              className="w-full max-w-lg bg-white border border-slate-200 rounded-3xl p-5 md:p-6 shadow-2xl relative"
             >
-              <img 
-                src="/logo.png" 
-                alt="GoSmart Mobility Logo" 
-                className="w-full h-full object-contain"
-              />
-            </motion.div>
-
-            {/* Skyline & Road Background Container */}
-            <div className="absolute inset-x-0 bottom-0 top-28 rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-slate-100 z-0">
-              <img
-                src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=800&q=80"
-                alt="City Skyline Road"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
-            </div>
-
-            {/* Green Cab (Moved Up, Overlayed) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="relative z-10 w-64 sm:w-72 -mt-10 mb-6 select-none"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80"
-                alt="GoSmart Green Taxi"
-                className="w-full object-contain drop-shadow-2xl rounded-2xl border border-white shadow-lg"
-              />
-              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-emerald-600 text-white font-extrabold text-[9px] tracking-wider uppercase px-2.5 py-0.5 rounded-md shadow-md border border-emerald-400">
-                GoSmart Cab
+              {/* Header Banner */}
+              <div className="bg-[#0b56a4] text-white py-3 px-4 rounded-xl text-center shadow-sm mb-5 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-20"></div>
+                <h3 className="font-heading font-black text-base sm:text-lg text-[#ffd600] tracking-wide relative z-10 uppercase">
+                  Book Local & Intercity Cabs
+                </h3>
               </div>
-            </motion.div>
 
+              {/* Form fields */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Car Type & Trip Type */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                      <span className="text-red-500 mr-1">*</span>Type Of Car
+                    </label>
+                    <div className="relative">
+                      <Car className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <select
+                        required
+                        value={formData.carType}
+                        onChange={(e) => setFormData({ ...formData, carType: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-6 py-2.5 text-xs font-bold text-slate-700 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue appearance-none cursor-pointer"
+                      >
+                        <option value="SEDAN">SEDAN</option>
+                        <option value="SUV">SUV</option>
+                        <option value="MUV">MUV</option>
+                        <option value="TEMPO TRAVELLER">TEMPO TRAVELLER</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                      <span className="text-red-500 mr-1">*</span>Trip Type
+                    </label>
+                    <div className="relative">
+                      <Route className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <select
+                        required
+                        value={formData.tripType}
+                        onChange={(e) => setFormData({ ...formData, tripType: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-6 py-2.5 text-xs font-bold text-slate-700 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue appearance-none cursor-pointer"
+                      >
+                        <option value="Round Trip">Round Trip</option>
+                        <option value="One Way">One Way</option>
+                        <option value="Local Package">Local Package</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* From */}
+                <div className="space-y-1">
+                  <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                    <span className="text-red-500 mr-1">*</span>From
+                  </label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Enter pickup location"
+                      value={formData.from}
+                      onChange={(e) => setFormData({ ...formData, from: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue"
+                    />
+                  </div>
+                </div>
+
+                {/* To */}
+                <div className="space-y-1">
+                  <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                    <span className="text-red-500 mr-1">*</span>To
+                  </label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Enter drop location"
+                      value={formData.to}
+                      onChange={(e) => setFormData({ ...formData, to: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue"
+                    />
+                  </div>
+                </div>
+
+                {/* Pickup Date & Time */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                      <span className="text-red-500 mr-1">*</span>Pick up Date
+                    </label>
+                    <div className="relative">
+                      <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <input
+                        type="date"
+                        required
+                        value={formData.pickupDate}
+                        onChange={(e) => setFormData({ ...formData, pickupDate: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2.5 text-xs font-bold text-slate-700 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                      <span className="text-red-500 mr-1">*</span>Pick up Time
+                    </label>
+                    <div className="relative">
+                      <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <select
+                        required
+                        value={formData.pickupTime}
+                        onChange={(e) => setFormData({ ...formData, pickupTime: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-6 py-2.5 text-xs font-bold text-slate-700 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue appearance-none cursor-pointer"
+                      >
+                        {timeOptions.map((time) => (
+                          <option key={time} value={time}>{time}</option>
+                        ))}
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Traveler Name */}
+                <div className="space-y-1">
+                  <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                    <span className="text-red-500 mr-1">*</span>Traveler Name
+                  </label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Enter traveler name"
+                      value={formData.travelerName}
+                      onChange={(e) => setFormData({ ...formData, travelerName: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue"
+                    />
+                  </div>
+                </div>
+
+                {/* Mobile Number & Email */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                      <span className="text-red-500 mr-1">*</span>Mobile Number
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Enter mobile"
+                        value={formData.mobileNumber}
+                        onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-left">
+                      Email
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <input
+                        type="email"
+                        placeholder="Enter email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:border-gsm-blue focus:ring-1 focus:ring-gsm-blue"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Submit button */}
+                <button
+                  type="submit"
+                  className="w-full bg-[#f6d20f] hover:bg-[#e2c00a] text-slate-900 font-extrabold text-xs sm:text-sm py-3 rounded-xl transition-all duration-300 shadow-md uppercase tracking-wider cursor-pointer active:scale-98 mt-2"
+                >
+                  Submit
+                </button>
+              </form>
+            </motion.div>
           </div>
 
         </div>
